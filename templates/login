@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Game Library </title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; }
+        form { margin-top: 1rem; }
+        label { display: block; margin-top: 1rem; }
+        input { padding: 0.3rem; width: 250px; }
+        .error { color: red; margin-top: 1rem; }
+        .button-row { margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+
+    {% if error_msg %}
+        <div class="error">
+            <p>{{ error_msg }}</p>
+        </div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('login') }}">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="login_password">Password:</label>
+        <input type="password" id="login_password" name="login_password" required>
+
+        <div class="button-row">
+            <button type="submit">Log In</button>
+            <a href="{{ url_for('add_user') }}">
+                <button type="button">Create New Profile</button>
+            </a>
+        </div>
+    </form>
+</body>
+</html>
