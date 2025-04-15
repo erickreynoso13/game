@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Contest Results</title></head>
+<body>
+    <h1>My Baking Contest Results</h1>
+
+    {% if results %}
+        <table border="1">
+            <tr>
+                <th>Entry ID</th>
+                <th>Name Of Game</th>
+                <th>Number of Excellent Votes</th>
+                <th>Number of OK Votes</th>
+                <th>Number of Bad Votes</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result['entry_id'] }}</td>
+                <td>{{ result['name_of_baking_item'] }}</td>
+                <td>{{ result['num_excellent_votes'] }}</td>
+                <td>{{ result['num_ok_votes'] }}</td>
+                <td>{{ result['num_bad_votes'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No contest entries found.</p>
+    {% endif %}
+
+    <a href="/">Go back to home page</a><br>
+    <a href="/logout">Log Out</a><br>
+
+</body>
+</html>
