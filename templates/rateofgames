@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Results</title>
+</head>
+<body>
+    <h1>Game List</h1>
+
+    {% if results %}
+        <table border="1">
+            <tr>
+                <th>Name of Game</th>
+                <th>Excellent Votes</th>
+                <th>OK Votes</th>
+                <th>Bad Votes</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result['name_of_game'] }}</td>
+                <td>{{ result['num_excellent_votes'] }}</td>
+                <td>{{ result['num_ok_votes'] }}</td>
+                <td>{{ result['num_bad_votes'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No game entries available.</p>
+    {% endif %}
+
+    <a href="/">Go back to home page</a><br>
+    <a href="/logout">Log Out</a><br>
+</body>
+</html>
+
+
