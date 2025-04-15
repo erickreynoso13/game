@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Game Library</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; }
+        a { display: block; margin: 0.5rem 0; text-decoration: none; color: #0077cc; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Game Library, {{ username }}!</h1>
+
+    <nav>
+        <a href="{{ url_for('add_entry') }}">Rate a Game</a>
+        <a href="{{ url_for('list_users') }}">Friends</a>
+        <a href="{{ url_for('list_results') }}">Game List</a>
+        <a href="{{ url_for('logout') }}">Log Out</a>
+    </nav>
+</body>
+</html>
