@@ -1,0 +1,39 @@
+import sqlite3
+
+def create_db():
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    # Create GammerAccount table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS GammerAccount (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            age INTEGER NOT NULL,
+            email TEXT NOT NULL,
+            login_password TEXT NOT NULL,
+            security_level INTEGER DEFAULT 1,
+            UNIQUE (name)
+        )
+    ''')
+
+    # Create GameEntry table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS GameEntry (
+            entry_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            name_of_game TEXT NOT NULL,
+            num_excellent_votes INTEGER DEFAULT 0,
+            num_ok_votes INTEGER DEFAULT 0,
+            num_bad_votes INTEGER DEFAULT 0,
+            FOREIGN KEY (user_id) REFERENCES GammerAccount(id)
+        )
+    ''')
+
+    # Commit and close
+    conn.commit()
+    conn.close()
+    print("Database and tables created successfully.")
+
+# Run the function to create the tables
+create_db()
